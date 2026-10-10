@@ -36,10 +36,11 @@
         ? (es ? "0,9% ALCOHOL BENCÍLICO" : "0.9% BENZYL ALCOHOL")
         : (es ? "≥99% PUREZA*" : "≥99% PURITY*");
       const vertical = product.family === "essentials" ? (es ? "ESENCIALES" : "ESSENTIALS") : labels.vertical;
+      const coaTag = product.name === "BAC Water" ? "" : `<span class="tag">${labels.coa}</span>`;
       return `<article class="product-card${hidden}" tabindex="0" data-family="${product.family}" style="--accent:${product.accent}" data-reveal>
         <span class="product-number">N° ${String(index + 1).padStart(2, "0")}</span>
         <div class="vial"><div class="cap"></div><div class="neck"></div><div class="bottle"><div class="label"><div class="label-main"><span class="label-brand">NOVÜM LABS · RUO</span><strong class="label-name">${product.label}</strong><span class="label-dose">${product.dose}</span><span class="label-meta">${labels.lot} ${product.lot}<br>${purity} · ${labels.exp} 05/2029</span></div><span class="label-vertical">${vertical}</span></div></div></div>
-        <h3>${product.name} · ${product.dose}</h3><p>${product.front[lang]}</p><div class="product-tags"><span class="tag">${labels.coa}</span><span class="tag">RUO</span></div>
+        <h3>${product.name} · ${product.dose}</h3><p>${product.front[lang]}</p><div class="product-tags">${coaTag}<span class="tag">RUO</span><span class="tag">ISO 17025</span></div>
         <div class="product-back"><span class="back-kicker">${product.kicker[lang]}</span><h3>${product.name}</h3><div class="back-copy"><p><strong>${labels.composition}:</strong> ${product.composition[lang]}</p><p><strong>${labels.target}:</strong> ${product.target[lang]}</p><p><strong>${labels.use}:</strong> ${product.use[lang]}</p></div><span class="back-foot">${labels.foot}</span></div>
       </article>`;
     }).join("");
